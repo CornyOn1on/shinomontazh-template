@@ -1,0 +1,45 @@
+{
+  "priceNote": "Стоимость зависит от диаметра колеса и состояния шины. Точную цену мастер назовёт после осмотра — до начала работ.",
+  "services": [
+    {
+      "id": "tire-service",
+      "title": "Шиномонтаж",
+      "description": "Монтаж и демонтаж шин, сезонная переобувка комплекта колёс.",
+      "price": 500,
+      "priceFrom": true,
+      "priceUnit": "за услугу",
+      "isVisible": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "wheel-balancing",
+      "title": "Балансировка колёс",
+      "description": "Балансировка на стенде — убирает вибрацию руля и кузова на скорости.",
+      "price": 500,
+      "priceFrom": true,
+      "priceUnit": "за услугу",
+      "isVisible": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "puncture-repair",
+      "title": "Ремонт проколов",
+      "description": "Надёжный ремонт прокола с проверкой колеса на герметичность.",
+      "price": 500,
+      "priceFrom": true,
+      "priceUnit": "за услугу",
+      "isVisible": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "side-cut-repair",
+      "title": "Ремонт боковых порезов",
+      "description": "Восстановление бокового пореза — когда шину ещё можно спасти.",
+      "price": 500,
+      "priceFrom": true,
+      "priceUnit": "за услугу",
+      "isVisible": true,
+      "sortOrder": 4
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# Пример файла CNAME для подключения собственного домена на GitHub Pages.
+#
+# КАК ИСПОЛЬЗОВАТЬ
+# 1. Скопируйте этот файл в public/CNAME:
+#       cp CNAME.example public/CNAME
+#    (в Windows PowerShell: Copy-Item CNAME.example public\CNAME)
+# 2. Откройте public/CNAME и напишите в нём ТОЛЬКО свой домен, одной строкой,
+#    без https:// и без слэша в конце. Пример:
+#       shinomontazh-shchekino.ru
+# 3. Закоммитьте файл и отправьте в GitHub.
+# 4. В настройках GitHub: Settings → Pages → Custom domain — впишите тот же домен.
+# 5. Дождитесь проверки DNS и включите галочку Enforce HTTPS.
+#
+# ВАЖНО: пока файла public/CNAME нет, сайт публикуется по адресу
+# https://<логин>.github.io/<имя-репозитория>/ и сборка использует base-путь
+# с именем репозитория. Как только вы добавляете public/CNAME, GitHub Actions
+# автоматически переключает base на "/" (см. шаг Determine base path в
+# .github/workflows/deploy.yml) — менять vite.config.ts вручную не нужно.
+#
+# Ниже — просто пример. Замените на свой домен.
+
+shinomontazh-shchekino.ru

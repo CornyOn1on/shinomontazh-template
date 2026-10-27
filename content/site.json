@@ -1,0 +1,39 @@
+{
+  "companyName": "Название шиномонтажа",
+  "shortDescription": "Быстрый шиномонтаж и ремонт шин",
+  "city": "Город",
+  "region": "Область",
+  "address": "Точный адрес компании",
+  "phone": "+7 000 000-00-00",
+  "workingHours": "Ежедневно с 09:00 до 19:00",
+  "logo": "",
+  "telegramUsername": "",
+  "telegramPhone": "",
+  "maxProfileUrl": "",
+  "maxShareUrl": "",
+  "maxEnabled": false,
+  "yandexMapsUrl": "",
+  "latitude": null,
+  "longitude": null,
+  "rating": 5,
+  "reviewCount": 0,
+  "heroTitle": "Шиномонтаж в вашем городе",
+  "heroDescription": "Быстрая замена, ремонт и балансировка колёс. Работаем по записи, без очередей.",
+  "advantages": [
+    "Работаем по записи — без ожидания",
+    "Современные балансировочные стенды",
+    "Гарантия на все виды работ",
+    "Удобный подъезд и парковка"
+  ],
+  "displayMode": "no-photos",
+  "facts": [
+    { "value": "10 лет", "label": "Опыт мастеров", "icon": "tool", "sortOrder": 1, "isVisible": true },
+    { "value": "30 мин", "label": "Смена комплекта колёс", "icon": "clock-fast", "sortOrder": 2, "isVisible": true },
+    { "value": "R13–R22", "label": "Работаем с любым диаметром", "icon": "wheel", "sortOrder": 3, "isVisible": true },
+    { "value": "100%", "label": "Гарантия на работы", "icon": "shield", "sortOrder": 4, "isVisible": true }
+  ],
+  "seoTitle": "",
+  "seoDescription": "",
+  "ogImage": "",
+  "favicon": "/favicon.svg"
+}

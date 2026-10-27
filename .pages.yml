@@ -1,0 +1,538 @@
+# =============================================================================
+# Конфигурация Pages CMS — панель управления контентом сайта шиномонтажа
+# =============================================================================
+#
+# Документация: https://pagescms.org/docs/configuration/
+#
+# Что это даёт:
+#   Владелец компании открывает https://app.pagescms.org/, выбирает свой сайт
+#   и меняет тексты, цены, фотографии, контакты. Pages CMS записывает изменения
+#   в файлы этого репозитория на GitHub, GitHub Actions пересобирает сайт,
+#   GitHub Pages публикует новую версию.
+#
+# Что владелец изменить НЕ может (и не должен):
+#   - React-компоненты и стили;
+#   - структуру страницы;
+#   - этот файл (.pages.yml);
+#   - сценарий сборки в .github/workflows/;
+#   - список участников;
+#   - другие сайты.
+#   Эти ограничения обеспечивает сам Pages CMS: участники (collaborators)
+#   не имеют доступа к .pages.yml и к управлению участниками.
+#
+# ВАЖНО: здесь нет и не должно быть токенов, паролей и персональных данных.
+# Весь контент сайта — публичные файлы в папке content/ и public/.
+# =============================================================================
+
+media:
+  # Загрузки из панели управления складываются в публичную папку сайта,
+  # а в JSON-файлы записывается путь вида /uploads/имя-файла.png
+  input: public/uploads
+  output: /uploads
+  categories: ["image"]
+  extensions: ["jpg", "jpeg", "png", "webp", "svg"]
+  rename: true
+
+settings:
+  # Коммиты участников подписываются их именем и адресом —
+  # в истории репозитория видно, кто и что изменил.
+  commit:
+    identity: user
+
+content:
+  # ---------------------------------------------------------------------------
+  # ГРУППА: Контент сайта
+  # ---------------------------------------------------------------------------
+  - name: company
+    label: Контент сайта
+    type: group
+    items:
+      # -----------------------------------------------------------------------
+      # Общие настройки компании: content/site.json
+      # -----------------------------------------------------------------------
+      - name: site
+        label: Общие настройки
+        type: file
+        path: content/site.json
+        format: json
+        view:
+          fields: [companyName, city, phone]
+        fields:
+          - name: companyName
+            label: Название компании
+            type: string
+            required: true
+            description: Показывается в шапке, подвале и в тексте заявки в мессенджер.
+
+          - name: shortDescription
+            label: Короткое описание
+            type: text
+            options:
+              maxlength: 200
+            description: Одна фраза о компании. Используется в подвале и в подписях.
+
+          - name: city
+            label: Город
+            type: string
+            required: true
+            description: Например, Щёкино.
+
+          - name: region
+            label: Регион
+            type: string
+            description: Например, Тульская область.
+
+          - name: address
+            label: Адрес
+            type: string
+            required: true
+            description: Полный адрес с улицей и номером дома. Используется для маршрута и карты.
+
+          - name: phone
+            label: Телефон
+            type: string
+            required: true
+            description: "Формат: +7 000 000-00-00. По этому номеру работает кнопка «Позвонить»."
+
+          - name: workingHours
+            label: Режим работы
+            type: string
+            description: Например, Ежедневно с 08:00 до 20:00.
+
+          - name: logo
+            label: Логотип
+            type: image
+            options:
+              path: public/branding
+              extensions: ["png", "jpg", "jpeg", "webp", "svg"]
+            description: >
+              Необязательно. Если логотипа нет — сайт покажет название компании
+              текстом. Рекомендуется PNG с прозрачностью или SVG, высота 80–120 px.
+
+          - name: favicon
+            label: Иконка сайта (favicon)
+            type: image
+            options:
+              path: public/branding
+              extensions: ["svg", "png", "ico"]
+            description: Необязательно. Маленькая иконка в браузерной вкладке.
+
+          # --- Контакты в мессенджерах ---
+          - name: telegramUsername
+            label: Telegram — имя пользователя
+            type: string
+            description: >
+              Без символа @. Например: shinomontazh_shchekino.
+              Именно сюда сайт откроет чат с готовым текстом заявки.
+              Если поле пустое, будет использован Telegram-телефон.
+
+          - name: telegramPhone
+            label: Telegram — телефон
+            type: string
+            description: >
+              Запасной вариант, если нет имени пользователя.
+              Международный формат: +79990000000.
+
+          - name: maxEnabled
+            label: Показывать кнопку MAX
+            type: boolean
+            description: Включите, если компания принимает заявки в мессенджере MAX.
+
+          - name: maxProfileUrl
+            label: MAX — ссылка на профиль
+            type: string
+            description: "Прямая ссылка на ваш профиль в MAX, например https://max.ru/u/..."
+
+          - name: maxShareUrl
+            label: MAX — ссылка для отправки
+            type: string
+            description: >
+              Необязательно. Share-ссылка MAX. Сайт добавит к ней готовый текст заявки.
+
+          # --- Карты ---
+          - name: yandexMapsUrl
+            label: Яндекс Карты — ссылка на организацию
+            type: string
+            description: >
+              Ссылка на карточку компании в Яндекс Картах. Используется для кнопок
+              «Построить маршрут», «Открыть адрес на карте» и «Все отзывы».
+
+          - name: latitude
+            label: Широта
+            type: number
+            description: Необязательно. Точная координата для маршрута, например 54.005123.
+
+          - name: longitude
+            label: Долгота
+            type: number
+            description: Необязательно. Точная координата для маршрута, например 37.519456.
+
+          # --- Рейтинг ---
+          - name: rating
+            label: Рейтинг компании
+            type: number
+            options:
+              min: 1
+              max: 5
+              step: 0.1
+            description: Средняя оценка, например 4.9. Показывается рядом со звёздами.
+
+          - name: reviewCount
+            label: Количество отзывов
+            type: number
+            options:
+              min: 0
+            description: >
+              Общее число отзывов на Яндекс Картах. Если указать 0,
+              счётчик отзывов на сайте не показывается.
+
+          # --- Первый экран ---
+          - name: heroTitle
+            label: Заголовок первого экрана
+            type: string
+            required: true
+            description: Крупный заголовок. Хорошо работает «Шиномонтаж в Щёкино».
+
+          - name: heroDescription
+            label: Описание первого экрана
+            type: text
+            options:
+              maxlength: 300
+            description: 1–2 предложения под заголовком.
+
+          - name: advantages
+            label: Преимущества (короткие)
+            type: string
+            list: true
+            description: >
+              Короткие пункты: опыт мастеров, современное оборудование, быстрое
+              обслуживание, гарантия, удобный подъезд, работа по записи.
+              Рекомендуется 4–6 пунктов.
+
+          # --- Вариация сайта: с фотографиями или без ---
+          - name: displayMode
+            label: Вариация сайта
+            type: select
+            options:
+              values:
+                - name: photos
+                  label: С фотографиями
+                - name: no-photos
+                  label: Без фотографий
+            description: >
+              «С фотографиями» — большой снимок на первом экране и галерея.
+              «Без фотографий» — вместо снимков графический блок с цифрами
+              и этапами работы. Выберите этот вариант, если фотографий компании нет.
+              Если выбрано «С фотографиями», но фотографии не добавлены,
+              сайт сам переключится на вариант без фотографий.
+
+          - name: facts
+            label: Цифры и факты (для варианта без фотографий)
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{value} — {label}"
+            description: >
+              Показываются на первом экране и в блоке «Как мы работаем»
+              в варианте без фотографий. Рекомендуется 4 показателя.
+            fields:
+              - name: value
+                label: Значение
+                type: string
+                required: true
+                description: "Крупная цифра или короткий текст, например: 10 лет, 30 мин, R13–R22."
+
+              - name: label
+                label: Пояснение
+                type: string
+                required: true
+                description: "Что означает цифра, например: Опыт мастеров."
+
+              - name: icon
+                label: Иконка
+                type: select
+                options:
+                  values:
+                    - { name: tool, label: Инструмент }
+                    - { name: clock-fast, label: Быстро }
+                    - { name: shield, label: Гарантия }
+                    - { name: wheel, label: Колесо }
+                    - { name: check, label: Галочка }
+                    - { name: map-pin, label: Адрес }
+                    - { name: phone, label: Телефон }
+                    - { name: clock, label: Часы }
+                    - { name: star, label: Звезда }
+                    - { name: route, label: Маршрут }
+                description: Иконка рядом с цифрой.
+
+              - name: sortOrder
+                label: Порядок
+                type: number
+                options:
+                  min: 0
+
+              - name: isVisible
+                label: Показывать
+                type: boolean
+
+          # --- SEO ---
+          - name: seoTitle
+            label: SEO — заголовок страницы
+            type: string
+            options:
+              maxlength: 70
+            description: Показывается в браузерной вкладке и в результатах поиска.
+
+          - name: seoDescription
+            label: SEO — описание страницы
+            type: text
+            options:
+              maxlength: 200
+            description: >
+              Краткое описание для поисковых систем. Употребите естественно:
+              шиномонтаж Щёкино, балансировка колёс, ремонт шин.
+
+          - name: ogImage
+            label: Превью для мессенджеров (Open Graph)
+            type: image
+            options:
+              path: public/branding
+              extensions: ["jpg", "jpeg", "png", "webp"]
+            description: >
+              Необязательно. Картинка 1200x630, которая показывается, когда ссылку
+              на сайт отправляют в мессенджере.
+
+      # -----------------------------------------------------------------------
+      # Услуги: content/services.json
+      # -----------------------------------------------------------------------
+      - name: services
+        label: Услуги и цены
+        type: file
+        path: content/services.json
+        format: json
+        fields:
+          - name: priceNote
+            label: Пояснение к ценам
+            type: text
+            options:
+              maxlength: 300
+            description: >
+              Текст под заголовком прайса. Объясняет, что цена зависит от размера
+              колеса и состояния шины.
+
+          - name: services
+            label: Список услуг
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title} — {index}"
+            fields:
+              - name: title
+                label: Название услуги
+                type: string
+                required: true
+
+              - name: description
+                label: Описание услуги
+                type: text
+                options:
+                  maxlength: 300
+
+              - name: price
+                label: Цена, ₽
+                type: number
+                options:
+                  min: 0
+                description: >
+                  Только число, без знака рубля. Для «по запросу» оставьте поле
+                  пустым и заполните «Цена по запросу» ниже.
+
+              - name: priceFrom
+                label: Показывать «от»
+                type: boolean
+                description: Включите, если это минимальная цена.
+
+              - name: priceUnit
+                label: Единица измерения или текст цены
+                type: string
+                description: >
+                  Например: за колесо, за комплект, за сезон.
+                  Если цена не указана — пишите «по запросу».
+
+              - name: isVisible
+                label: Показывать услугу на сайте
+                type: boolean
+
+              - name: sortOrder
+                label: Порядок в списке
+                type: number
+                options:
+                  min: 0
+                description: Чем меньше число, тем выше услуга в списке.
+
+              - name: id
+                label: Служебный идентификатор
+                type: string
+                readonly: true
+                description: >
+                  Техническое поле. Не меняйте: используется как внутренний ключ.
+
+      # -----------------------------------------------------------------------
+      # Фотографии: content/gallery.json
+      # -----------------------------------------------------------------------
+      - name: gallery
+        label: Фотографии
+        type: file
+        path: content/gallery.json
+        format: json
+        fields:
+          - name: galleryNote
+            label: Пояснение под галереей
+            type: text
+            options:
+              maxlength: 400
+            description: >
+              Показывается, пока среди фотографий есть заглушки.
+              Когда все фото станут реальными — текст можно оставить, он не выводится.
+
+          - name: photos
+            label: Фотографии в галерее
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "Фото {index}: {caption}"
+            fields:
+              - name: src
+                label: Изображение
+                type: image
+                required: true
+                options:
+                  path: public/images/company
+                  extensions: ["jpg", "jpeg", "png", "webp", "svg"]
+                  rename: true
+                description: >
+                  Загрузите настоящее фото компании или укажите путь вручную:
+                  /images/company/имя-файла.jpg
+
+              - name: alt
+                label: Alt-текст
+                type: string
+                required: true
+                description: >
+                  Описание изображения для незрячих пользователей и поисковых систем.
+                  Например: «Рабочая зона шиномонтажа с подъёмником».
+
+              - name: caption
+                label: Подпись под фото
+                type: string
+                description: Короткая подпись, которая видна на карточке и в просмотре.
+
+              - name: isVisible
+                label: Показывать фото
+                type: boolean
+
+              - name: sortOrder
+                label: Порядок в галерее
+                type: number
+                options:
+                  min: 0
+                description: Чем меньше число, тем раньше фото. Первое фото становится главным на первом экране.
+
+              - name: isPlaceholder
+                label: Это изображение-заглушка
+                type: boolean
+                description: >
+                  Снимите галочку, когда замените заглушку настоящей фотографией
+                  компании. Пока галочка стоит, на фото будет бейдж «Заглушка».
+
+              - name: id
+                label: Служебный идентификатор
+                type: string
+                readonly: true
+                description: Техническое поле. Не меняйте.
+
+      # -----------------------------------------------------------------------
+      # Отзывы: content/reviews.json
+      # -----------------------------------------------------------------------
+      - name: reviews
+        label: Отзывы
+        type: file
+        path: content/reviews.json
+        format: json
+        fields:
+          - name: reviewsNote
+            label: Пояснение к отзывам
+            type: text
+            options:
+              maxlength: 400
+            description: >
+              Показывается, пока среди отзывов есть демонстрационные.
+              Когда добавите настоящие отзывы и снимете галочку «Демонстрационный»,
+              текст перестанет выводиться.
+
+          - name: reviews
+            label: Список отзывов
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name} — {rating}/5"
+            fields:
+              - name: name
+                label: Имя клиента
+                type: string
+                required: true
+
+              - name: rating
+                label: Оценка
+                type: number
+                options:
+                  min: 1
+                  max: 5
+                  step: 1
+                description: Целое число от 1 до 5.
+
+              - name: text
+                label: Текст отзыва
+                type: text
+                required: true
+                options:
+                  maxlength: 1000
+                description: Приводите настоящий текст отзыва клиента без правок смысла.
+
+              - name: date
+                label: Дата отзыва
+                type: date
+
+              - name: yandexReviewUrl
+                label: Ссылка на отзыв в Яндекс Картах
+                type: string
+                description: >
+                  Необязательно. Прямая ссылка на конкретный отзыв. Если указана,
+                  карточка отзыва становится кликабельной.
+
+              - name: isVisible
+                label: Показывать отзыв
+                type: boolean
+
+              - name: isDemo
+                label: Демонстрационный отзыв
+                type: boolean
+                description: >
+                  Снимите галочку только для настоящих отзывов реальных клиентов.
+                  Не публикуйте придуманные отзывы от имени реальных людей.
+
+              - name: sortOrder
+                label: Порядок в списке
+                type: number
+                options:
+                  min: 0
+
+              - name: id
+                label: Служебный идентификатор
+                type: string
+                readonly: true
+                description: Техническое поле. Не меняйте.

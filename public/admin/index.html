@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Управление сайтом — инструкция для владельца</title>
+    <style>
+      :root {
+        --text: #111827;
+        --muted: #5b6472;
+        --soft: #8a93a0;
+        --navy: #0f1a2b;
+        --accent: #f26a1b;
+        --border: #e5e7eb;
+        --bg: #f8f7f5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 40px 20px 72px;
+        font-family: "Manrope", "Onest", "Golos Text", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--bg);
+      }
+
+      .wrap {
+        max-width: 780px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 36px 32px 40px;
+        box-shadow: 0 10px 32px rgba(17, 24, 39, 0.06);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 999px;
+        background-color: #fff1e6;
+        color: #9a4406;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 16px 0 12px;
+        font-size: clamp(24px, 4vw, 32px);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--navy);
+      }
+
+      h2 {
+        margin: 34px 0 12px;
+        font-size: 20px;
+        color: var(--navy);
+      }
+
+      p,
+      li {
+        color: var(--muted);
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 26px 0 8px;
+        padding: 16px 30px;
+        border-radius: 999px;
+        background-color: var(--accent);
+        color: #fff;
+        font-size: 17px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 6px 18px rgba(242, 106, 27, 0.28);
+      }
+
+      .cta:hover {
+        background-color: #d95a10;
+      }
+
+      ol,
+      ul {
+        padding-left: 22px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      .box {
+        margin: 22px 0;
+        padding: 16px 20px;
+        border-radius: 12px;
+        font-size: 15.5px;
+        line-height: 1.55;
+      }
+
+      .box strong {
+        color: inherit;
+      }
+
+      .box--info {
+        background-color: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e40af;
+      }
+
+      .box--warn {
+        background-color: #fffbeb;
+        border: 1px solid #fde68a;
+        color: #92400e;
+      }
+
+      .box--ok {
+        background-color: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+      }
+
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .cols > div {
+        padding: 18px 20px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .cols h3 {
+        margin: 0 0 10px;
+        font-size: 16px;
+        color: var(--navy);
+      }
+
+      .cols ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      footer {
+        margin-top: 34px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        font-size: 14px;
+        color: var(--soft);
+      }
+
+      @media (max-width: 620px) {
+        .cols {
+          grid-template-columns: 1fr;
+        }
+
+        .wrap {
+          padding: 26px 20px 30px;
+        }
+
+        .cta {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <span class="badge">Инструкция для владельца</span>
+
+      <h1>Управление сайтом через Pages CMS</h1>
+
+      <p>
+        Эта страница <strong>не панель управления</strong>. Она объясняет, где находится
+        настоящая панель и как в неё войти. Редактирование сайта происходит в сервисе
+        <strong>Pages CMS</strong> — он сохраняет изменения прямо в файлы вашего сайта на GitHub.
+      </p>
+
+      <a class="cta" href="https://app.pagescms.org/" target="_blank" rel="noopener noreferrer">
+        Открыть панель управления
+      </a>
+
+      <div class="box box--info">
+        <strong>GitHub-аккаунт не нужен.</strong> Доступ выдаётся по приглашению на вашу
+        электронную почту. Разработчик приглашает вас — вы подтверждаете приглашение и
+        входите в панель.
+      </div>
+
+      <h2>Как войти</h2>
+      <ol>
+        <li>Откройте <strong>Pages CMS</strong> по кнопке выше.</li>
+        <li>Войдите по приглашению — оно приходит на ваш email от сервиса.</li>
+        <li>Выберите нужный сайт в списке.</li>
+        <li>Измените данные: тексты, цены, фотографии, контакты.</li>
+        <li>Сохраните изменения.</li>
+        <li>Подождите 1–3 минуты, пока сайт пересоберётся автоматически.</li>
+        <li>Обновите страницу сайта (иногда поможет Ctrl + F5).</li>
+      </ol>
+
+      <div class="box box--warn">
+        <strong>Если вы не приглашены</strong>, Pages CMS покажет отказ в доступе. Это нормально:
+        доступ есть только у тех, кого пригласил разработчик. Напишите разработчику, и он
+        отправит приглашение повторно.
+      </div>
+
+      <h2>Что можно менять</h2>
+      <div class="cols">
+        <div>
+          <h3>Доступно вам</h3>
+          <ul>
+            <li>Название компании и описание</li>
+            <li>Логотип</li>
+            <li>Телефон, адрес, режим работы</li>
+            <li>Ссылки на Telegram и MAX</li>
+            <li>Ссылка на Яндекс Карты</li>
+            <li>Координаты для маршрута</li>
+            <li>Услуги и цены</li>
+            <li>Фотографии галереи</li>
+            <li>Отзывы клиентов</li>
+            <li>SEO: заголовок, описание, превью для мессенджеров</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Недоступно вам</h3>
+          <ul>
+            <li>Код сайта (React-компоненты)</li>
+            <li>Стили и вёрстка</li>
+            <li>Структура страницы</li>
+            <li>Настройки сборки и публикации</li>
+            <li>Конфигурация панели управления</li>
+            <li>Другие сайты и репозитории</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Как сохраняются изменения</h2>
+      <ol>
+        <li>Вы нажимаете «Сохранить» в Pages CMS.</li>
+        <li>Сервис записывает изменения в файлы вашего сайта на GitHub.</li>
+        <li>Автоматическая сборка пересобирает сайт.</li>
+        <li>Обновлённая версия публикуется на вашем домене.</li>
+      </ol>
+
+      <div class="box box--ok">
+        Если сайт не обновился сразу — это нормально. Сборка занимает несколько минут.
+        Подождите, обновите страницу, и только потом обращайтесь к разработчику.
+      </div>
+
+      <h2>Форма заявок: важное пояснение</h2>
+      <p>
+        Сайт не отправляет заявки автоматически — у него нет серверной части и базы данных.
+        Когда клиент заполняет форму, сайт только готовит текст заявки и открывает мессенджер.
+        Сообщение приходит вам лишь после того, как клиент сам нажмёт кнопку отправки в
+        Telegram или MAX.
+      </p>
+      <p>
+        Дата и время работ согласуются напрямую в переписке — форма их не собирает.
+      </p>
+
+      <h2>Если панель не открывается</h2>
+      <ul>
+        <li>Проверьте интернет и попробуйте открыть <a href="https://app.pagescms.org/" target="_blank" rel="noopener noreferrer">app.pagescms.org</a> заново.</li>
+        <li>Проверьте, что вошли под тем email, на который пришло приглашение.</li>
+        <li>Если сервис временно недоступен — это внешний сервис, повторите попытку позже.</li>
+        <li>Если ничего не помогает — напишите разработчику.</li>
+      </ul>
+
+      <footer>
+        Панель управления: <a href="https://app.pagescms.org/" target="_blank" rel="noopener noreferrer">app.pagescms.org</a>
+        · Эта страница не является CMS и не хранит данные сайта.
+      </footer>
+    </div>
+  </body>
+</html>
