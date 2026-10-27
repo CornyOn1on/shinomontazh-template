@@ -1,7 +1,7 @@
 {
-  "companyName": "Название шиномонтажа",
+  "companyName": "Тест автопубликации",
   "shortDescription": "Быстрый шиномонтаж и ремонт шин",
-  "city": "Город",
+  "city": "Проверка",
   "region": "Область",
   "address": "Точный адрес компании",
   "phone": "+7 000 000-00-00",
@@ -27,10 +27,34 @@
   ],
   "displayMode": "no-photos",
   "facts": [
-    { "value": "10 лет", "label": "Опыт мастеров", "icon": "tool", "sortOrder": 1, "isVisible": true },
-    { "value": "30 мин", "label": "Смена комплекта колёс", "icon": "clock-fast", "sortOrder": 2, "isVisible": true },
-    { "value": "R13–R22", "label": "Работаем с любым диаметром", "icon": "wheel", "sortOrder": 3, "isVisible": true },
-    { "value": "100%", "label": "Гарантия на работы", "icon": "shield", "sortOrder": 4, "isVisible": true }
+    {
+      "value": "10 лет",
+      "label": "Опыт мастеров",
+      "icon": "tool",
+      "sortOrder": 1,
+      "isVisible": true
+    },
+    {
+      "value": "30 мин",
+      "label": "Смена комплекта колёс",
+      "icon": "clock-fast",
+      "sortOrder": 2,
+      "isVisible": true
+    },
+    {
+      "value": "R13–R22",
+      "label": "Работаем с любым диаметром",
+      "icon": "wheel",
+      "sortOrder": 3,
+      "isVisible": true
+    },
+    {
+      "value": "100%",
+      "label": "Гарантия на работы",
+      "icon": "shield",
+      "sortOrder": 4,
+      "isVisible": true
+    }
   ],
   "seoTitle": "",
   "seoDescription": "",
