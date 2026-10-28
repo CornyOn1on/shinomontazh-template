@@ -6,15 +6,8 @@
   "address": "Точный адрес компании",
   "phone": "+7 000 000-00-00",
   "workingHours": "Ежедневно с 09:00 до 19:00",
-  "logo": "",
-  "telegramUsername": "",
-  "telegramPhone": "",
-  "maxProfileUrl": "",
-  "maxShareUrl": "",
+  "favicon": "/favicon.svg",
   "maxEnabled": false,
-  "yandexMapsUrl": "",
-  "latitude": null,
-  "longitude": null,
   "rating": 5,
   "reviewCount": 0,
   "heroTitle": "Шиномонтаж в вашем городе",
@@ -25,7 +18,7 @@
     "Гарантия на все виды работ",
     "Удобный подъезд и парковка"
   ],
-  "displayMode": "no-photos",
+  "displayMode": "photos",
   "facts": [
     {
       "value": "10 лет",
@@ -55,9 +48,5 @@
       "sortOrder": 4,
       "isVisible": true
     }
-  ],
-  "seoTitle": "",
-  "seoDescription": "",
-  "ogImage": "",
-  "favicon": "/favicon.svg"
+  ]
 }
