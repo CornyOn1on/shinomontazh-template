@@ -45,6 +45,7 @@
       "title": "Заправка кондиционера",
       "price": 20000,
       "priceFrom": true,
+      "priceUnit": "За услугу",
       "isVisible": true,
       "sortOrder": 5
     }
